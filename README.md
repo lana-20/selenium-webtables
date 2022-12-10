@@ -1,4 +1,4 @@
-# Selenium Webtables
+# Selenium WebTables
 
 Sometimes in the app I encounter data in a tabular format. I can perform various types of operations on the __WebTables__, a.k.a. HTML tables.
 
@@ -26,4 +26,4 @@ When I move my cursor on a _tr_, it highlight the corresponding row in the table
 If I expand the 1st _tr_, I can see the _th_ tag which stands for the table header. The 1st row contains the table headers.
 <img src="https://user-images.githubusercontent.com/70295997/206878713-2bebf4d4-1b82-4245-8657-8ae4ac685177.png" width=600>
 
-The 1tr containts 5 _th_ tags, each representing a header in a particular table.
+The 1tr containts 4 _th_ tags, each representing a header in a particular table.
