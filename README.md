@@ -18,3 +18,12 @@ The tag names available for the table is _table_. It has an attribute called 'na
 
 <img src="https://user-images.githubusercontent.com/70295997/206873000-608f5050-aa4a-4dbd-878d-0a7befac0334.png" width=600>
 
+If I expand the _tbody_ tag, I can see a lot of _tr_ tags in it. There are multiple 'tr's, each representing a table row.
+<img src="https://user-images.githubusercontent.com/70295997/206878522-801b7a57-94aa-4336-a54e-5c527e99b0fb.png" width=600>
+
+When I move my cursor on a _tr_, it highlight the corresponding row in the table. Each _tr_ represents one entire row.
+
+If I expand the 1st _tr_, I can see the _th_ tag which stands for the table header. The 1st row contains the table headers.
+<img src="https://user-images.githubusercontent.com/70295997/206878713-2bebf4d4-1b82-4245-8657-8ae4ac685177.png" width=600>
+
+The 1tr containts 5 _th_ tags, each representing a header in a particular table.
