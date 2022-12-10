@@ -27,3 +27,16 @@ If I expand the 1st _tr_, I can see the _th_ tag which stands for the table head
 <img src="https://user-images.githubusercontent.com/70295997/206878713-2bebf4d4-1b82-4245-8657-8ae4ac685177.png" width=600>
 
 The 1tr containts 4 _th_ tags, each representing a header in a particular table.
+
+The actual data starts from the 2nd _tr_. Now, I expand the 2nd _tr_ and see multiple _td_ tags, which stand for table data. From the 2nd _tr_ onward, the _td_ tags with the actual table data are available. Data is inserted inside the table data tags.
+<img src="https://user-images.githubusercontent.com/70295997/206879456-4a494489-d158-47ca-989f-4fcd154dfd5a.png" width=600>
+
+This is the structure of the table in HTML.
+
+Mostly, I work with customized Xpaths to work with the data in the table. Inside the Xpath I can dynamically pass a parameter. I call this a dynamic Xpath.
+
+Perform a few operations on the table:
+1) Count the number of rows and columns
+2) Read a specific row and column data
+3) Read all the rows and columns data
+4) Read data based on a condition. Eg, list the book names whose author is Mukesh. There are 2 books written by Mukesh, I want to retrieve only those. So, I do a condition-based retrieval of the data.
