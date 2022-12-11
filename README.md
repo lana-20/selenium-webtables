@@ -40,3 +40,41 @@ Perform a few operations on the table:
 2) Read a specific row and column data
 3) Read all the rows and columns data
 4) Read data based on a condition. Eg, list the book names whose author is Mukesh. There are 2 books written by Mukesh, I want to retrieve only those. So, I do a condition-based retrieval of the data.
+
+<img src="https://user-images.githubusercontent.com/70295997/206879836-4d4d9828-f008-42ad-913d-6859d21cfc54.png" width=600>
+
+To count the number of rows, I can simply count the number of 'tr's. Every _tr_ tag represents one web element. I can capture all the _tr_ tags and count how many are there. This would equal to the number of rows.
+
+Write one Xpath which matches/points to all the 'tr's from the table:
+
+	//table[@name='BookTable']/tbody/tr
+
+
+Point to the 1st row:
+
+
+	//table[@name='BookTable']/tbody/tr[1]
+
+
+Point to the 2nd row:
+
+
+	//table[@name='BookTable']/tbody/tr[2]
+
+By changing the index numbers, I can point to all the different rows, all the way up to tr[7]. I can shorten the syntax, by removing the _tbody_ tag:
+
+	//table[@name='BookTable']//tr
+
+This returns all the 'tr's, i.e. multiple web elements:
+
+	driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr")
+
+But I don't need all the elements, I just need the count. For that, I use the _len()_ function:
+
+	len(driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr"))
+
+I store the count value in a variable called num_of_rows:
+
+	num_of_rows = len(driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr"))
+
+Similarily, let's find the number of columns in the table.
