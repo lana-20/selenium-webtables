@@ -77,4 +77,18 @@ I store the count value in a variable called num_of_rows:
 
 	num_of_rows = len(driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr"))
 
-Similarily, let's find the number of columns in the table.
+Similarily, let's find the number of columns in the table. If I find the number of headers, that would equal the number of columns. The headers are in the 1st _tr_. I need to count the number of _th_ tags inside the 1st _tr_.
+
+This Xpath returns 4 elements, which means there are 4 headers (because there are 4 columns):
+
+	//table[@name='BookTable']/tbody/tr[1]/th
+
+Again, I want to shorten the Xpath. I can remove the index from _tr_ because by default it goes to the 1st _tr_ in the BookTable.
+	
+	//table[@name='BookTable']//tr/th
+
+With or without the index, it captures 4 elements:
+
+	num_of_columns = len(driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr/th"))
+
+<img src="https://user-images.githubusercontent.com/70295997/206880559-5d1aad2e-1304-4e9d-a275-2509deba3dbb.png" width=600>
