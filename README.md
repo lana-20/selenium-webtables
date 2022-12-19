@@ -91,4 +91,8 @@ With or without the index, it captures 4 elements:
 
 	num_of_columns = len(driver.find_elements(By.XPATH, "//table[@name='BookTable']//tr/th"))
 
+I've found the count of rows and columns. I'll use these values to read the data from the table.
+
+Now, I want to read data from a specific row and column. Let's say I want to capture 'Master in Selenium'.
+
 <img src="https://user-images.githubusercontent.com/70295997/206880559-5d1aad2e-1304-4e9d-a275-2509deba3dbb.png" width=600>
