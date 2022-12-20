@@ -95,6 +95,26 @@ With or without the index, it captures 4 elements:
 
 I've found the count of rows and columns. I'll use these values to read the data from the table.
 
-Now, I want to read data from a specific row and column. Let's say I want to capture 'Master in Selenium'.
+Now, I want to read data from a specific row and column. Let's say I want to capture 'Master in Selenium'. It's  in the 5th _tr_ row, 1st _td_ column.
 
 <img src="https://user-images.githubusercontent.com/70295997/208344980-34838eb0-7cd3-4287-972c-b3ebfe4d87cb.png" width=350>
+
+Write an Xpath, pass in the row and column index number to get the right value:
+
+	//table[@name='BookTable']/tbody/tr[5]/td[1]
+
+<img src="https://user-images.githubusercontent.com/70295997/208758940-fb2c9d9f-6ee3-4ae9-8e5b-78c9cd59a423.png" width=600>
+
+Similarily, to retrieve Subject Java, traverse to the 3rd row, 3rd column:
+
+	//table[@name='BookTable']/tbody/tr[3]/td[3]
+
+<img src="https://user-images.githubusercontent.com/70295997/208759503-046ee73e-cbaa-420c-acab-4b06b0c27225.png" width=600>
+
+I've located the desired web element. And now want to extract its text value by using the _.text_ keyword and storeit in the variable _data_:
+
+	data = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr[5]/td[1]").text
+
+
+
+
