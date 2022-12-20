@@ -17,6 +17,8 @@ print(num_of_columns) # 4
 
 # Read specific row and columns data
 
+data = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr[5]/td[1]").text
+print(data) # Master In Selenium
 
 # Read all the rows and columns data
 
