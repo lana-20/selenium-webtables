@@ -111,10 +111,22 @@ Similarily, to retrieve Subject Java, traverse to the 3rd row, 3rd column:
 
 <img src="https://user-images.githubusercontent.com/70295997/208759503-046ee73e-cbaa-420c-acab-4b06b0c27225.png" width=600>
 
-I've located the desired web element. And now want to extract its text value by using the _.text_ keyword and storeit in the variable _data_:
+I've located the desired web element. And now want to extract its text value by using the _.text_ keyword and storeit in the variable _data_. To extract any specific value from the table, pass in the row and column numbers. The rest of the Xpath remains the same.
 
 	data = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr[5]/td[1]").text
 
+Now I want to read data from all rows and columns. For that, I write two looping statements to find out how many rows and columns. One loop statement is for incrementing the rows, the other loop statement is for incrementing the columns. There are multiple columns per row. First, I focus on reading the 1st row columns, then move on to reading the 2nd row column fields and so on.
+
+One for loop increments the rows. Inside it, I nest another for loop to read all the column data from a specific row.  There are 7 rows, but the 1st row is the header part, which I want to ignore. So, I start from the 2nd row. Inside the column loop I provide the Xpath with dynamic row and column values. This way, I parameterize the data inside the Xpath. I pass params/arguments into Xpath, which then becomes a dynamic Xpath. 
+
+I want specify the _r_ variable for a row, and the _c_ value for a column number. But Xpath does not allow to specify variables as in _tr[r]/td[c]_. I have to follow a certain syntax to pass params into Xpath. Convert the params into a string format with the _str()_ function. Prefix and postfix the  _str()_ function with the the '+' plus operator as in _+str(r)+_ and put in quotes as in _"+str(r)+"_. Then only the values get passed into Xpath dynamically. This is the syntax to extract the variable and pass the data into the Xpath. I cannot pass the variables directly into the Xpath. 
+To print the data in a tabulat format, add an empty line after a row with _print()_ and end each column value with some space.
+
+	for r in range(2, num_of_rows + 1):
+		for c in range(1, num_of_columns + 1):
+			data = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
+			print(data, end="   ")
+		print()
 
 
 
