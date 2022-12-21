@@ -25,7 +25,7 @@ print("Printing all the rows and columns data")
 for r in range(2, num_of_rows + 1):
 	for c in range(1, num_of_columns + 1):
 		data = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
-	print(data, end="   ")
-print()
+		print(data, end="   ")
+	print()
 
 # List books based on a condition
