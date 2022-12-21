@@ -128,5 +128,30 @@ To print the data in a tabulat format, add an empty line after a row with _print
 			print(data, end="   ")
 		print()
 
+Now, I want to retrieve the data based on a certain condition. Let's say my requirement is to get the book names authored by Mukesh. The Author names are available in the 2nd column. I have to read the author name from each and every row or compare it with "Mukesh". 
 
+<img src="https://user-images.githubusercontent.com/70295997/209004170-70577483-6c6b-44e2-b9bf-50e6b0ab4372.png" width=600>
+
+If the author name matches "Mukesh", then from the same row get the value of the BookName and print it. If the author name is not equal to Mukesh, then go to the next name. This happens through the looping statement, beacause I need to read every author from every row in the table. I need only 2 columns - Author and BookName.
+
+First, write the loop which repeats the number of rows, because I need to get all the author names one by one.
+Xpath _//table[@name='BookTable']/tbody/tr/td_ slects all the rows and columns in the table. To read the 2nd column, pass the column index to the Xpath _//table[@name='BookTable']/tbody/tr/td[2]_. By changing the row numbers from _tr[2]_ to _tr[7]_, I can get all the authors one by one. But the column number remains constant, because at the moment I don't need any other columns. The column number can remain hard coded, but the row number has to change with every iteration.
+
+![image](https://user-images.githubusercontent.com/70295997/209004473-ee6e4bcc-37dc-4638-b5b0-5a14522da26c.png)
+
+While the column number remains constant, I have to pass the _r_ value in lieu of the row index number. As soon the author name matches "Mukesh", I immediately capture the book name in the same row. I reuse the _author_name_ Xpath and change the column number to _td[1]_ to capture the name of the book.
+
+Suppose I also want to print the price details along with the author and book name. Simply change the logic by adding the _price_ variable pointing to the 4th column _td[4]_.
+
+
+	for r in range(2, num_of_rows + 1):
+		author_name = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[2]").text
+		if author_name == "Mukesh":
+			book_name = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[1]").text
+			price = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[4]").text
+			print(book_name, "	", author_name, "		", price)
+
+This is how I write the logic and retrieve the rows and columns data from a table.
+
+There are also dynamic tables where data always changes, such as those in the OrangeHRM app (https://opensource-demo.orangehrmlive.com/).
 
