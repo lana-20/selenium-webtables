@@ -29,3 +29,12 @@ for r in range(2, num_of_rows + 1):
 	print()
 
 # List books based on a condition
+for r in range(2, num_of_rows + 1):
+	author_name = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[2]").text
+	if author_name == "Mukesh":
+		book_name = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[1]").text
+		price = driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"])/td[4]").text
+		print(book_name, "	", author_name, "		", price)
+		
+
+driver.close()
