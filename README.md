@@ -182,6 +182,8 @@ Find the total number of rows available inside the table body, ignore the table 
 	rows = len(driver.find_elements(By.XPATH, "//*[@class='oxd-table-body']/div/div"))
 	print("total Number of rows:", rows)
 
+<img src="https://user-images.githubusercontent.com/70295997/209053823-fc67052a-9809-4c85-be12-648c90bd31d7.png" width=600>
+
 <img src="https://user-images.githubusercontent.com/70295997/209051626-c43e7cb7-2049-4619-a009-1243cccdf3e4.png" width=400>
 
 To get each Status I have to dynamically pass the row number.
