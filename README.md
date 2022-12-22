@@ -155,3 +155,29 @@ This is how I write the logic and retrieve the rows and columns data from a tabl
 
 There are also dynamic tables where data always changes, such as those in the OrangeHRM app (https://opensource-demo.orangehrmlive.com/).
 
+Start with the login using username _Admin_ and password _admin123_. Then to navigate to a table, go to Admin tab > User Management > Users (https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers).
+This table data consistently changes all the time, it's beyond my control. There are user names, user roles, employee names and status available in the table. Some user roles are Admin, some are ESS. Every user is in the Enabled state.
+
+<img src="https://user-images.githubusercontent.com/70295997/209029374-69142c86-e994-4bd5-a1c7-f7e8fa379503.png" width=600>
+
+Let's say my requirement is to find out how many users are in the Enabled status and how many Disabled. Currently, all of my users are Enabled. I'm going to turn some of them to Disabled for testing purposes.
+
+<img src="https://user-images.githubusercontent.com/70295997/209029433-fb7c5d74-7a22-40c0-afd9-dec8a9b33131.png" width=600>
+
+No need to work with all the rows and columns. I only need the Status column to find the number of Enabled and Disabled employees.
+
+First, navigate to the table.
+
+	# Admin -> User Management -> Users
+	wait = driver.WebDriverWait(driver, 5)
+	wait.until(EC.element_to_be_present((By.XPATH, "//li//a//span"))).click()   # Admin
+
+	driver.find_element(By.XPATH, "//nav//li/span").click()   # User Management
+	driver.find_element(By.CSS_SELECTOR, "a[role='menuitem']").click()  # Users
+
+Then, find out the status of employees. I need to go through each row and capture the Status column value. From every row, I capture the 5th column value.
+
+Xpath for all rows: _//*[contains(@class,'oxd-table-row')]_ or _//*[@role='row']_.
+
+
+
