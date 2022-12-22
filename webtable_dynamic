@@ -26,13 +26,13 @@ driver.find_element(By.XPATH, "//nav//li/span").click()   # User Management
 driver.find_element(By.CSS_SELECTOR, "a[role='menuitem']").click()  # Users
 
 # total Number of rows in a table
-rows = len(driver.find_elements(By.XPATH, "//*[@class='oxd-table-body']/div/div/div[5]"))
+rows = len(driver.find_elements(By.XPATH, "//*[@class='oxd-table-body']/div/div"))
 print("total Number of rows:", rows)
 
 # number of enabled employees
 count = 0
 for r in range(1, rows + 1):
-	status = driver.find_elements(By.XPATH, "//*[@class='oxd-table-body']/div["+str(r)+"]/div/div[5]")).text
+	status = driver.find_element(By.XPATH, "//*[@class='oxd-table-body']/div["+str(r)+"]/div/div[5]")).text
 	if status == "Enabled":
 		count += 1
 
