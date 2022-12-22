@@ -203,3 +203,9 @@ A typical table tag structure is:
 <img src="https://user-images.githubusercontent.com/70295997/209053097-a81a60d5-d6db-4c63-8488-17a174ae8ea4.png" width=150>
 
 Extra Practice: Print the user names and user roles if the user role is ESS.
+
+	for r in range(1, rows + 1):
+		role = driver.find_element(By.XPATH, "//*[@class='oxd-table-body']/div["+str(r)+"]/div/div[3]")).text
+		username = driver.find_element(By.XPATH, "//*[@class='oxd-table-body']/div["+str(r)+"]/div/div[2]")).text
+		if role == "ESS":
+			print(username, role)
