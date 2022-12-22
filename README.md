@@ -137,7 +137,7 @@ If the author name matches "Mukesh", then from the same row get the value of the
 First, write the loop which repeats the number of rows, because I need to get all the author names one by one.
 Xpath _//table[@name='BookTable']/tbody/tr/td_ slects all the rows and columns in the table. To read the 2nd column, pass the column index to the Xpath _//table[@name='BookTable']/tbody/tr/td[2]_. By changing the row numbers from _tr[2]_ to _tr[7]_, I can get all the authors one by one. But the column number remains constant, because at the moment I don't need any other columns. The column number can remain hard coded, but the row number has to change with every iteration.
 
-![image](https://user-images.githubusercontent.com/70295997/209004473-ee6e4bcc-37dc-4638-b5b0-5a14522da26c.png)
+<img src="https://user-images.githubusercontent.com/70295997/209004473-ee6e4bcc-37dc-4638-b5b0-5a14522da26c.png" width=400>
 
 While the column number remains constant, I have to pass the _r_ value in lieu of the row index number. As soon the author name matches "Mukesh", I immediately capture the book name in the same row. I reuse the _author_name_ Xpath and change the column number to _td[1]_ to capture the name of the book.
 
@@ -175,9 +175,29 @@ First, navigate to the table.
 	driver.find_element(By.XPATH, "//nav//li/span").click()   # User Management
 	driver.find_element(By.CSS_SELECTOR, "a[role='menuitem']").click()  # Users
 
-Then, find out the status of employees. I need to go through each row and capture the Status column value. From every row, I capture the 5th column value.
+Then, find out the status of employees. I need to go through each row and capture the Status column value. From every row, I capture the 5th column value. I need to repeat this in every row, for that I capture the total number of rows via a looping statement.
 
-Xpath for all rows: _//*[contains(@class,'oxd-table-row')]_ or _//*[@role='row']_.
+Find the total number of rows available inside the table body, ignore the table headers.
 
+	rows = len(driver.find_elements(By.XPATH, "//*[@class='oxd-table-body']/div/div"))
+	print("total Number of rows:", rows)
 
+<img src="https://user-images.githubusercontent.com/70295997/209051626-c43e7cb7-2049-4619-a009-1243cccdf3e4.png" width=400>
 
+To get each Status I have to dynamically pass the row number.
+
+	count = 0
+	for r in range(1, rows + 1):
+		status = driver.find_element(By.XPATH, "//*[@class='oxd-table-body']/div["+str(r)+"]/div/div[5]")).text
+		if status == "Enabled":
+			count += 1
+
+	print("Total number of users:", rows)
+	print("Number of enabled users:", count)
+	print("Number of disabled users:", (rows - count))
+
+A typical table tag structure is:
+
+<img src="https://user-images.githubusercontent.com/70295997/209053097-a81a60d5-d6db-4c63-8488-17a174ae8ea4.png" width=150>
+
+Extra Practice: Print the user names and user roles if the user role is ESS.
